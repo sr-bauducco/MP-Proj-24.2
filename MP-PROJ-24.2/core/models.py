@@ -9,16 +9,6 @@ class User(AbstractUser):
     ]
     tipo = models.CharField(max_length=10, choices=TIPO_USUARIO, default='comprador')
 
-    groups = models.ManyToManyField(
-        "auth.Group",
-        related_name="core_users",
-        blank=True
-    )
-    user_permissions = models.ManyToManyField(
-        "auth.Permission",
-        related_name="core_users",
-        blank=True
-    )
 
 class Banca(models.Model):
     nome = models.CharField(max_length=100)
@@ -65,3 +55,12 @@ class Relatorio(models.Model):
     total_pesquisas = models.IntegerField()
     top_produtos = models.TextField()
     top_bancas = models.TextField()
+
+
+class Feira(models.Model):
+    nome = models.CharField(max_length=100)
+    descricao = models.TextField()
+    localizacao = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.nome
