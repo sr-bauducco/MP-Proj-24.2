@@ -1,4 +1,4 @@
-q# MP-Proj-24.2
+# MP-Proj-24.2
 
 Este é um sistema de gerenciamento de feiras, onde usuários podem buscar produtos, realizar avaliações e interagir com feirantes. O sistema permite que administradores, feirantes e compradores se cadastrem e acessem diferentes funcionalidades, como o cadastro de produtos, avaliação de feiras, e muito mais.
 
@@ -45,4 +45,31 @@ Este é um sistema de gerenciamento de feiras, onde usuários podem buscar produ
    ```bash
    python manage.py runserver
    ```
-   
+   Agora, a aplicação estará rodando em [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
+
+## Como Usar
+
+### Endpoints da API
+
+- `POST /auth/register/` - Registro de um novo usuário (comprador ou feirante).
+- `POST /auth/login/` - Login de usuário.
+- `GET /produtos/` - Lista todos os produtos cadastrados.
+- `POST /produtos/` - Cadastro de um novo produto (feirante).
+- `GET /feiras/` - Lista todas as feiras.
+- `POST /feiras/` - Cadastro de uma nova feira (feirante).
+- `POST /avaliacoes/` - Adicionar avaliação a uma feira ou produto.
+- `GET /bancas/` - Lista de bancas cadastradas.
+
+### Acesso ao Admin
+
+- **Admin URL**: [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/)
+- Faça login com o superusuário criado durante a instalação.
+
+## Contribuindo
+
+Se você deseja contribuir com este projeto, siga estas etapas:
+
+1. Faça um fork deste repositório.
+2. Crie uma branch para a nova funcionalidade:
+   ```bash
+   git checkout -b feature/nova-funcionalidade
