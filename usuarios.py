@@ -1,6 +1,6 @@
 usuarios = []
 
-def cadastrar_usuario(nome, email, tipo):
+def cadastrar_usuario(nome, email, tipo="cliente"):
     """ Cadastra um novo usuário """
     usuarios.append({"nome": nome, "email": email, "tipo": tipo})
 

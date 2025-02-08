@@ -6,7 +6,7 @@ def test_cadastrar_usuario():
     usuarios = []
     
     # Chama a função cadastrar_usuario
-    cadastrar_usuario("João Silva", "joao@example.com", "cliente")
+    cadastrar_usuario("João Silva", "joao@example.com")
     
     # Verifica se o usuário foi cadastrado corretamente
     usuarios = listar_usuarios()[0]
