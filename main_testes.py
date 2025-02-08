@@ -1,6 +1,7 @@
 # test_usuarios.py
 from usuarios import cadastrar_usuario, listar_usuarios, buscar_usuario
 from produtos import buscar_produto, ordenar_produtos
+from bancas import cadastrar_banca, listar_bancas
 
 def test_cadastrar_usuario():
     # Limpa a lista de usuários antes do teste (simulando um estado inicial)
@@ -52,3 +53,14 @@ def test_ordenar_produtos():
                                             {"nome": "Notebook Dell", "preco": 3500.00},
                                             {"nome": "Notebook Lenovo", "preco": 4000.00}
                                          ]
+
+def test_cadastrar_e_listar_banca():
+    #Lista de bancas disponíveis
+    banca = [
+        {"nome": "Banca A", "localizacao": "Rua 1"}
+    ]
+
+    # Chama a função cadastrar_banca
+    cadastrar_banca(banca[0]["nome"], banca[0]["localizacao"])
+
+    assert listar_bancas() == [{"nome": "Banca A", "localizacao": "Rua 1"}]
