@@ -1,5 +1,6 @@
 # test_usuarios.py
 from usuarios import cadastrar_usuario, listar_usuarios, buscar_usuario
+from produtos import buscar_produto
 
 def test_cadastrar_usuario():
     # Limpa a lista de usuários antes do teste (simulando um estado inicial)
@@ -22,4 +23,18 @@ def test_buscar_usuario():
     cadastrar_usuario("João Silva", "joao@example.com")
 
     assert buscar_usuario(email) != None
+
+def test_buscar_produto():
+    #Lista de produtos disponíveis
+    produtos = [
+    {"nome": "Notebook Dell", "preco": 3500.00},
+    {"nome": "Mouse Logitech", "preco": 150.00},
+    {"nome": "Teclado Mecânico", "preco": 300.00},
+    {"nome": "Monitor LG", "preco": 1200.00},
+    {"nome": "Notebook Lenovo", "preco": 4000.00}
+    ]
+
+    assert buscar_produto(produtos, "Monitor") == [{"nome": "Monitor LG", "preco": 1200.00}]
+
+    
 
