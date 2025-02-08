@@ -9,4 +9,5 @@ def listar_usuarios():
     return usuarios
 
 def buscar_usuario(email):
-    return
+    """ Busca um usuário pelo e-mail """
+    return next((u for u in usuarios if u["email"] == email), None)
