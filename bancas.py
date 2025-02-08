@@ -1,7 +1,9 @@
 bancas = []
 
 def listar_bancas():
-    return
+    """ Retorna a lista de bancas cadastradas """
+    return bancas
 
 def cadastrar_banca(nome, localizacao):
-    return
+    """ Adiciona uma nova banca à lista """
+    bancas.append({"nome": nome, "localizacao": localizacao})
