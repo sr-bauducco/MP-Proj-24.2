@@ -7,3 +7,6 @@ def cadastrar_usuario(nome, email, tipo="cliente"):
 def listar_usuarios():
     """ Retorna a lista de usuários cadastrados """
     return usuarios
+
+def buscar_usuario(email):
+    return
