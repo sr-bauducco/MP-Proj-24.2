@@ -1,6 +1,6 @@
 # test_usuarios.py
 from usuarios import cadastrar_usuario, listar_usuarios, buscar_usuario
-from produtos import buscar_produto
+from produtos import buscar_produto, ordenar_produtos
 
 def test_cadastrar_usuario():
     # Limpa a lista de usuários antes do teste (simulando um estado inicial)
@@ -36,5 +36,19 @@ def test_buscar_produto():
 
     assert buscar_produto(produtos, "Monitor") == [{"nome": "Monitor LG", "preco": 1200.00}]
 
-    
+def test_ordenar_produtos():
+    #Lista de produtos disponíveis
+    produtos = [
+    {"nome": "Notebook Dell", "preco": 3500.00},
+    {"nome": "Mouse Logitech", "preco": 150.00},
+    {"nome": "Teclado Mecânico", "preco": 300.00},
+    {"nome": "Monitor LG", "preco": 1200.00},
+    {"nome": "Notebook Lenovo", "preco": 4000.00}
+    ]
 
+    assert ordenar_produtos(produtos) == [  {"nome": "Mouse Logitech", "preco": 150.00},
+                                            {"nome": "Teclado Mecânico", "preco": 300.00},
+                                            {"nome": "Monitor LG", "preco": 1200.00},
+                                            {"nome": "Notebook Dell", "preco": 3500.00},
+                                            {"nome": "Notebook Lenovo", "preco": 4000.00}
+                                         ]
