@@ -11,6 +11,10 @@ class UserViewSet(viewsets.ModelViewSet):
 class ProdutoViewSet(viewsets.ModelViewSet):
     queryset = Produto.objects.all()
     serializer_class = ProdutoSerializer
+    permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(vendedor=self.request.user)
 
 # ViewSet para Feira
 class FeiraViewSet(viewsets.ModelViewSet):
