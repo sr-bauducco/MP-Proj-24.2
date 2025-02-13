@@ -29,6 +29,7 @@ class BancaViewSet(viewsets.ModelViewSet):
     queryset = Banca.objects.all()
     serializer_class = BancaSerializer
 
+
 # ViewSet para Avaliacao
 class AvaliacaoViewSet(viewsets.ModelViewSet):
     queryset = Avaliacao.objects.all()
@@ -38,7 +39,6 @@ class AvaliacaoViewSet(viewsets.ModelViewSet):
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
-    permission_classes = [permissions.AllowAny]
 
 # Login com JWT
 class CustomTokenObtainPairView(TokenObtainPairView):

@@ -6,17 +6,26 @@ from django.contrib.auth import authenticate
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'tipo']
+        fields = ['id', 'username', 'email', 'role']
 
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
+    role = serializers.ChoiceField(choices=['cliente','feirante', 'administrador'])  # Adicionando campo role
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'password')
+        fields = ['username', 'email', 'password', 'role']
 
     def create(self, validated_data):
-        user = User.objects.create_user(**validated_data)
+        # Criação do usuário com base nos dados recebidos
+        user = User.objects.create_user(
+            username=validated_data['username'],
+            email=validated_data['email'],
+            password=validated_data['password'],
+            role = validated_data['role']
+        )
+        # Se necessário, adicione o campo 'role' em outro modelo relacionado (como 'Perfil')
+        user.save()
         return user
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
