@@ -1,0 +1,13 @@
+{
+    "produtos": [
+        {"nome": "Tomate", "preco": 5.0, "banca": "Banca A", "nota": 4.5},
+        {"nome": "Banana", "preco": 3.0, "banca": "Banca B", "nota": 4.7}
+    ],
+    "bancas": [
+        {"nome": "Banca A", "localizacao": "Rua 1"},
+        {"nome": "Banca B", "localizacao": "Rua 2"}
+    ],
+    "usuarios": [
+        {"nome": "João", "email": "joao@email.com", "tipo": "feirante"}
+    ]
+}
