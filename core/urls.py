@@ -1,7 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-from .views import UserViewSet, ProdutoViewSet, FeiraViewSet, BancaViewSet, AvaliacaoViewSet
+from .views import UserViewSet, ProdutoViewSet, FeiraViewSet, BancaViewSet, AvaliacaoViewSet,RegisterView, CustomTokenObtainPairView, logout_view
 
 # Criando o roteador para registrar os viewsets
 router = DefaultRouter()
@@ -12,8 +11,10 @@ router.register(r'bancas', BancaViewSet)
 router.register(r'avaliacoes', AvaliacaoViewSet)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/', include('produtos.urls')),
+    path('', include(router.urls)),
+    path('auth/register/', RegisterView.as_view(), name='register'),
+    path('auth/login/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
+   # path('auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('auth/logout/', logout_view, name='logout'),
+
 ]

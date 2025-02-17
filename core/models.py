@@ -2,12 +2,12 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 class User(AbstractUser):
-    TIPO_USUARIO = [
+    ROLE_CHOICES = [
         ('admin', 'Administrador'),
         ('feirante', 'Feirante'),
-        ('comprador', 'Comprador'),
+        ('cliente', 'Comprador'),
     ]
-    tipo = models.CharField(max_length=10, choices=TIPO_USUARIO, default='comprador')
+    role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='cliente')
 
 
 class Banca(models.Model):
@@ -16,19 +16,17 @@ class Banca(models.Model):
     endereco = models.CharField(max_length=255, blank=True, null=True)
     latitude = models.FloatField(blank=True, null=True)
     longitude = models.FloatField(blank=True, null=True)
-    dono = models.ForeignKey(User, on_delete=models.CASCADE, limit_choices_to={'tipo': 'feirante'})
+    dono = models.ForeignKey(User, on_delete=models.CASCADE, limit_choices_to={'role': 'feirante'})
 
     def __str__(self):
         return self.nome
     
 class Produto(models.Model):
-    nome = models.CharField(max_length=200)
-    descricao = models.TextField()
+    nome = models.CharField(max_length=100)
     preco = models.DecimalField(max_digits=10, decimal_places=2)
-    vendedor = models.ForeignKey(User, on_delete=models.CASCADE)
-    imagem = models.ImageField(upload_to='produtos/', null=True, blank=True)
-    criado_em = models.DateTimeField(auto_now_add=True)
-    
+    categoria = models.CharField(max_length=50)
+    banca = models.CharField(max_length=100)
+
     def __str__(self):
         return f"{self.nome} - R$ {self.preco}"
     
@@ -66,7 +64,3 @@ class Feira(models.Model):
 
     def __str__(self):
         return self.nome
-
-from django.db import models
-from django.contrib.auth.models import User
-
